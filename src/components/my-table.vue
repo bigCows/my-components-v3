@@ -29,26 +29,17 @@ export interface Props {
     
   })
 
-  const emit = defineEmits(['selectChange','rowDetail','pagination'])
+  const emit = defineEmits(['selectChange','pagination'])
 
   const pageSize = ref(props.limit)
   const currentPage = ref(props.pageNum) 
-  const ACT_COLOR = ref( '#61afef')
-  const INACT_COLOR = ref('#ccc')
   const loading = ref(false)
 
-  const rowDetail = (data: any) => {
-    emit('rowDetail',data)
-  }
   // 多选框
   const handleSelectionChange = (val: any) => {
     console.log(val,'handleselectionchange');
     
     emit('selectChange',val)
-  }
-  // switch开关
-  const changeStatus = (val:boolean) => {
-    // console.log(val);
   }
   const currentChange = (val:number) => {
     currentPage.value = val
@@ -72,45 +63,27 @@ export interface Props {
     @selection-change="handleSelectionChange"
     v-loading="loading"
     >
-      <el-table-column type="selection" v-if="isShow.selectionShow" />
-      
+
+      <el-table-column type="selection" v-if="isShow.selectionShow" />  
+
       <el-table-column type="index" v-if="isShow.sortShow" label="序号" width="70"/>
-      <!-- 渲染表格内容 -->
-        <el-table-column v-for="item in tableHeader" :key="item.key"  :label="item.label" :prop="item.key" :show-overflow-tooltip="true" >
-          <!-- <template #default="scope">
-            {{scope.row[scope.column.property]}}  
-            
-          </template> -->
-          <!-- 自定义插槽列 -->
-      <!-- <el-table-column v-if="item.soltName">
-        <template #default="scope">
-          <slot :name="item.soltName" :row="scope.row" :index="scope.$index" :column="scope.column"></slot>
-        </template>
-      </el-table-column> -->
-        </el-table-column>
       
-        <el-table-column label="启用状态" >
-          <template v-slot="scope">
-            <el-switch
-              v-model="scope.row.ifUse"
-              :active-color="ACT_COLOR"
-              :inactive-color="INACT_COLOR"
-              @change="changeStatus(scope.row)"
-              >
-            </el-switch>
+      <template v-for="item in tableHeader" :key="item.key">
+        <el-table-column  :label="item.label" :prop="item.key" :show-overflow-tooltip="true" :width="item.width" >
+          <template #default="scope" v-if="item.slotName">
+             <!-- 自定义插槽列 -->
+             <slot name="columnSlot" :scope="scope"></slot>
           </template>
         </el-table-column>
-      <el-table-column label="操作" v-if="isShow.detailShow" width="120">
-        <template v-slot="{row,$index,column}">
-          <el-link :underline="false" @click="rowDetail(row)">详情</el-link>
+      </template>
+
+
+      <el-table-column label="操作" v-if="isShow.detailShow">
+        <template #default="scope">
+          <slot name="operation" :scope="scope"></slot>
+
         </template>
       </el-table-column>
-      <!-- 自定义插槽列 -->
-      <!-- <el-table-column v-if="soltName">
-        <template #default="scope">
-          <slot :name="soltName" :row="scope.row" :index="scope.$index" :column="scope.column"></slot>
-        </template>
-      </el-table-column> -->
     </el-table>
     <div class="pagination">
       <el-pagination
