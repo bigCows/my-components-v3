@@ -28,8 +28,10 @@ export interface Props {
     dataTotal: 0,
     
   })
+  console.log(props,'props');
+  // q:此处props为什么是响应式数据？  a:因为withDefaults函数的返回值是一个响应式对象
 
-  const emit = defineEmits(['selectChange','pagination'])
+  const emits = defineEmits(['selectChange','pagination'])
 
   const pageSize = ref(props.limit)
   const currentPage = ref(props.pageNum) 
@@ -39,15 +41,15 @@ export interface Props {
   const handleSelectionChange = (val: any) => {
     console.log(val,'handleselectionchange');
     
-    emit('selectChange',val)
+    emits('selectChange',val)
   }
   const currentChange = (val:number) => {
     currentPage.value = val
-    emit('pagination',{pageNum:val,pageSize:pageSize.value})
+    emits('pagination',{pageNum:val,pageSize:pageSize.value})
   }
   const sizeChange = (val:number) => {
     pageSize.value = val
-    emit('pagination',{pageSize:val,pageNum:currentPage.value})
+    emits('pagination',{pageSize:val,pageNum:currentPage.value})
   }
 
 </script>

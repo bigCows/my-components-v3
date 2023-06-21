@@ -12,9 +12,9 @@ import 'element-plus/dist/index.css';
 
 import { singleMessage } from '@/components/single-message'
 
-// q:给window添加属性为什么报错?    
 const app = createApp(App)
-  
+
+// 单例模式消息提示
 app.config.globalProperties.singleMessage = singleMessage
 
 app.use(ElementPlus, {locale})

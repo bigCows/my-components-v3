@@ -25,7 +25,6 @@
         {
           label: '权限描述',
           key: 'description',
-          width:'150px',
           slotName:'aaa'
           
         },
@@ -65,18 +64,18 @@
   const selectChange = (val: tableDataType) => {
     console.log(val,'selectChange');
   }
-  const rowInfo = (data: tableDataType,e:Event) => {
-    (e.currentTarget! as HTMLButtonElement).blur()
+  const rowInfo = (data: tableDataType) => {
     console.log(data,'rowInfo');
   }
+  const copyData = [...tableData.value]
   // 获取最新页码，重新请求数据
   const getList = (val:{pageSize:number,pageNum:number}) => {
     const {pageSize,pageNum} = val
     limit.value = pageSize
     currentPage.value = pageNum
     console.log(val,'getlist');
+    tableData.value = copyData.slice((pageNum-1) * pageSize, pageNum * pageSize)
   }
-
   const changeStatus =(rowInfo: tableDataType) => {
     console.log(rowInfo,'changeStatus');
     
@@ -118,8 +117,8 @@
 
       <!-- 操作列：详情、删除等功能 -->
       <template #operation="{scope}">
-          <el-link :underline="false" type="primary" style="padding-right: 20px;"  @click="rowInfo(scope.row,$event)">详情</el-link>
-          <el-link :underline="false" type="danger"  @click="rowInfo(scope.row,$event)">删除</el-link>
+          <el-link :underline="false" type="primary" style="padding-right: 20px;"  @click="rowInfo(scope.row)">详情</el-link>
+          <el-link :underline="false" type="danger"  @click="rowInfo(scope.row)">删除</el-link>
       </template>
 
       </my-table>

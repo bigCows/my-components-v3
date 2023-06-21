@@ -6,10 +6,13 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
+import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    vueSetupExtend(),
     AutoImport({
       imports:['vue'],
       dts: 'src/components/auto-import/auto-import.d.ts',
