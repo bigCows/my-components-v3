@@ -6,7 +6,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-import vueSetupExtend from 'vite-plugin-vue-setup-extend'
+import vueSetupExtend from 'vite-plugin-vue-setup-extend' // 在script标签中使用name
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +14,7 @@ export default defineConfig({
     vue(),
     vueSetupExtend(),
     AutoImport({
-      imports:['vue'],
+      imports:['vue','pinia','vue-router'],
       dts: 'src/components/auto-import/auto-import.d.ts',
       resolvers: [ElementPlusResolver()]
     }),

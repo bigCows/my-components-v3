@@ -29,7 +29,6 @@ export interface Props {
     
   })
   console.log(props,'props');
-  // q:此处props为什么是响应式数据？  a:因为withDefaults函数的返回值是一个响应式对象
 
   const emits = defineEmits(['selectChange','pagination'])
 

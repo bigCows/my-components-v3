@@ -11,7 +11,9 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.195",
     "element-plus": "^2.3.5",
+    "lodash": "^4.17.21",
     "pinia": "^2.0.36",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"
