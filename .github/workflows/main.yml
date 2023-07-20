@@ -1,0 +1,19 @@
+name: my-components-v3
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@3
+        with:
+          node-version: '16.15.0'
+        env:
+        DEPLOY_V3_COMPONENTS: ${{ secrets.DEPLOY_V3_COMPONENTS }}
+        BRANCH: gh-pages
+        FOLDER: build
+        BUILD_SCRIPT: npm install && npm run build
+      
