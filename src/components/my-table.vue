@@ -34,7 +34,6 @@ export interface Props {
 
   const pageSize = ref(props.limit)
   const currentPage = ref(props.pageNum) 
-  const loading = ref(false)
 
   // 多选框
   const handleSelectionChange = (val: any) => {
@@ -58,11 +57,11 @@ export interface Props {
     <el-table
     ref="myTable"
     class="my-table"
+    v-on="$attrs"
     style="width: 100%"
     border
     :data="tableData"
     @selection-change="handleSelectionChange"
-    v-loading="loading"
     >
 
       <el-table-column type="selection" v-if="isShow.selectionShow" />  

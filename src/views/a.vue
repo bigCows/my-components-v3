@@ -1,0 +1,13 @@
+<script setup lang='ts'>
+
+</script>
+
+<template>
+  <div>
+    <el-button type="primary">a页面</el-button>
+  </div>
+</template>
+
+<style scoped>
+
+</style>

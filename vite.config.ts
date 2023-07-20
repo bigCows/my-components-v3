@@ -10,6 +10,7 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend' // 在script标签中�
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base:'./',
   plugins: [
     vue(),
     vueSetupExtend(),
