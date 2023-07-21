@@ -19,7 +19,7 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          DEPLOY_V3_COMPONENTS: ${{ secrets.DEPLOY_V3_COMPONENTS }}
+          ACCESS_TOKEN: ${{ secrets.DEPLOY_V3_COMPONENTS }}
           BRANCH: gh-pages
           FOLDER: dist
 
