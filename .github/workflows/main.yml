@@ -23,5 +23,4 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.DEPLOY_V3_COMPONENTS }}
           BRANCH: gh-pages
           FOLDER: dist
-          SINGLE_COMMIT: true # 部署最新的提交
 
