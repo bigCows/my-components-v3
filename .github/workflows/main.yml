@@ -7,13 +7,19 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
       - uses: actions/setup-node@3
         with:
           node-version: '16.15.0'
-        env:
-        DEPLOY_V3_COMPONENTS: ${{ secrets.DEPLOY_V3_COMPONENTS }}
-        BRANCH: gh-pages
-        FOLDER: build
-        BUILD_SCRIPT: npm install && npm run build
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          DEPLOY_V3_COMPONENTS: ${{ secrets.DEPLOY_V3_COMPONENTS }}
+          BRANCH: gh-pages
+          FOLDER: build
       
