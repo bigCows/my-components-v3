@@ -22,6 +22,8 @@
     <p v-height="'123'"></p>
     <p v-myText:bar.stop="obj">p标签</p>
     <el-button type="success">新增按钮</el-button>
+    <el-button type="success">新增按钮</el-button>
+    <el-button type="success">新增按钮</el-button>
 </template>
 
 <script setup lang='ts'>
