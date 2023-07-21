@@ -1,1 +1,0 @@
-import{b as r,K as a,f as u,o as c,c as l,i as p,w as i,j as _,E as m}from"./index-5d7defa3.js";/* empty css                  */const C=r({__name:"login",setup(d){const t=a(),o=u(),s=()=>{o.setToken("123"),t.push("/")};return(f,e)=>{const n=m;return c(),l("div",null,[p(n,{type:"primary",onClick:e[0]||(e[0]=k=>s())},{default:i(()=>[_("登录")]),_:1})])}}});export{C as default};
