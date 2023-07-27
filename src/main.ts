@@ -1,4 +1,4 @@
-import './assets/base.css'
+import './style/common.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -9,6 +9,7 @@ import router from './router'
 import ElementPlus from 'element-plus';
 import locale from 'element-plus/lib/locale/lang/zh-cn'
 import 'element-plus/dist/index.css';
+import 'normalize.css/normalize.css'
 
 import { singleMessage } from '@/components/single-message'
 import resetStore from '@/stores/reset-stroe'
@@ -25,7 +26,7 @@ app.directive('height', {
 //  el.style.height = binding.value + 'px'
 //  el.innerText = binding.value + 'px' 
  el.innerText = binding.value ? binding.value.split('').reverse().join('') : '';
-    }  
+}  
 })
 app.directive('myText', {
  mounted(el, binding, vnode, preVnode) {

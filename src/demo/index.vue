@@ -12,7 +12,7 @@ import router from '@/router';
       <el-button type="success" @click="router.push('/components-namespaces-demo')">componentsNamespacesDemo</el-button>
       <el-button type="success" @click="router.push('/diretive-demo')">directiveDemo</el-button>
 
-      <router-view></router-view>
+      <RouterView />
     </main>
   </div>
 </template>
@@ -27,8 +27,7 @@ import router from '@/router';
   
   .my-main {
     width: 100vw;
-    height: calc(100vh - 50px);
-    margin-top: 20px;
+    padding-top: 20px;
 
   }
 }
