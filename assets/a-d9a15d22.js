@@ -1,0 +1,1 @@
+import{_ as t,o,c as a,b as c,w as n,e as r,E as s}from"./index-9cd4fdfe.js";/* empty css                  */const _={};function l(p,d){const e=s;return o(),a("div",null,[c(e,{type:"primary"},{default:n(()=>[r("a页面")]),_:1})])}const m=t(_,[["render",l]]);export{m as default};
