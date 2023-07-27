@@ -10,11 +10,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElButton: typeof import('element-plus/es')['ElButton']
-    ElLink: typeof import('element-plus/es')['ElLink']
-    ElPagination: typeof import('element-plus/es')['ElPagination']
-    ElSwitch: typeof import('element-plus/es')['ElSwitch']
-    ElTable: typeof import('element-plus/es')['ElTable']
-    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    ElContainer: typeof import('element-plus/es')['ElContainer']
     MyTable: typeof import('./../my-table.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

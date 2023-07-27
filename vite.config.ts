@@ -5,7 +5,6 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-
 import vueSetupExtend from 'vite-plugin-vue-setup-extend' // 在script标签中使用name
 
 // https://vitejs.dev/config/

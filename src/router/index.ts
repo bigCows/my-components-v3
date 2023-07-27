@@ -5,29 +5,52 @@ import { useUserStore } from '@/stores/user'
 export const routes = [
   {
     path: '/',
-    name: 'singleMessageDemo',
-    component: () => import('@/demo/single-message-demo.vue')
+    name: 'home',
+    component: () => import('@/demo/index.vue'),
+    children: [
+      {
+        path: '/single-message-demo',
+        name: 'singleMessageDemo',
+        component: () => import('@/demo/single-message-demo.vue')
+      },
+      {
+        path: '/my-table-demo',
+        name: 'myTableDemo',
+        component: () => import('@/demo/my-table-demo.vue')
+      },
+      {
+        path: '/pinia-demo',
+        name: 'piniaDemo',
+        component: () => import('@/demo/pinia-demo.vue')
+      },
+      {
+        path: '/components-namespaces-demo',
+        name: 'componentsNamespacesDemo',
+        component: () => import('@/demo/components-namespaces-demo.vue')
+      },
+      {
+        path: '/diretive-demo',
+        name: 'diretiveDemo',
+        component: () => import('@/demo/diretive-demo.vue')
+      },
+    ]
   },
-  {
-    path: '/my-table-demo',
-    name: 'myTableDemo',
-    component: () => import('@/demo/my-table-demo.vue')
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/login.vue')
-  },
-  {
-    path: '/404',
-    name: 'NotFound',
-    component: () => import('@/views/404.vue')
-  },
-  {
-    path: '/:pathMatch(.*)*', 
-    name: 'NotMatch',
-    redirect: {name: 'NotFound'},
-  },
+  
+  // {
+  //   path: '/login',
+  //   name: 'login',
+  //   component: () => import('@/views/login.vue')
+  // },
+  // {
+  //   path: '/404',
+  //   name: 'NotFound',
+  //   component: () => import('@/views/404.vue')
+  // },
+  // {
+  //   path: '/:pathMatch(.*)*', 
+  //   name: 'NotMatch',
+  //   redirect: {name: 'NotFound'},
+  // },
 ]
 
 export const router = createRouter({
