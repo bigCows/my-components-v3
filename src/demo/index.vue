@@ -19,6 +19,7 @@ import router from '@/router';
 
 <style scoped lang="less">
 .my-container {
+  height: 100vh;
   .my-header{
     width: 100vw;
     height: 50px;
