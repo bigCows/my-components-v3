@@ -9,28 +9,28 @@ export const routes = [
     component: () => import('@/demo/index.vue'),
     children: [
       {
-        path: '/single-message-demo',
-        name: 'singleMessageDemo',
+        path: '/single-message',
+        name: 'singleMessage',
         component: () => import('@/demo/single-message-demo.vue')
       },
       {
-        path: '/my-table-demo',
-        name: 'myTableDemo',
+        path: '/my-table',
+        name: 'myTable',
         component: () => import('@/demo/my-table-demo.vue')
       },
       {
-        path: '/pinia-demo',
-        name: 'piniaDemo',
+        path: '/pinia',
+        name: 'pinia',
         component: () => import('@/demo/pinia-demo.vue')
       },
       {
-        path: '/components-namespaces-demo',
-        name: 'componentsNamespacesDemo',
+        path: '/components-namespaces',
+        name: 'componentsNamespaces',
         component: () => import('@/demo/components-namespaces-demo.vue')
       },
       {
-        path: '/diretive-demo',
-        name: 'diretiveDemo',
+        path: '/diretive',
+        name: 'diretive',
         component: () => import('@/demo/diretive-demo.vue')
       },
     ]

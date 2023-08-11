@@ -15,14 +15,14 @@ export default defineConfig({
     vueSetupExtend(),
     AutoImport({
       imports:['vue','pinia','vue-router'],
-      dts: 'src/components/auto-import/auto-import.d.ts',
+      dts: 'src/types/auto-import/auto-import.d.ts',
       resolvers: [ElementPlusResolver()]
     }),
     Components(
       { 
         dirs: 'src/components',
         extensions:['vue'],
-        dts: 'src/components/auto-import/auto-import-components.d.ts',
+        dts: 'src/types/auto-import/auto-import-components.d.ts',
         resolvers: [ElementPlusResolver()] 
       }
     ),

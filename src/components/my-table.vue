@@ -1,12 +1,8 @@
 <script setup lang='ts'>
+import type {isShowType} from '../types/my-table.d'
 
-export interface isShowType {
-  sortShow: boolean
-  selectionShow: boolean
-  detailShow: boolean
-}
-
-export interface Props {
+// https://cn.vuejs.org/guide/typescript/composition-api.html#typing-component-props, defineProps语法限制Props整体类型不能使用外部导入的复杂类型
+ interface Props {
   tableData: Array<any>
   tableHeader: Array<any>
   isShow: isShowType
@@ -17,7 +13,8 @@ export interface Props {
   dataTotal: number
   }
 
-  const props = withDefaults(defineProps<Props>(), {
+
+  const props  = withDefaults(defineProps<Props>(), {
     tableData: () => [],
     tableHeader: () => [],
     isShow:() => ({sortShow: false,selectionShow: false,detailShow: false}),
@@ -32,8 +29,26 @@ export interface Props {
 
   const emits = defineEmits(['selectChange','pagination'])
 
-  const pageSize = ref(props.limit)
-  const currentPage = ref(props.pageNum) 
+  // const pageSize = ref(props.limit)
+  // const currentPage = ref(props.pageNum) 
+
+  const pageSize = computed({
+    get: () => props.limit,
+    set: (val) => {
+      console.log(props.tableData,'tableData');
+      
+      pageSize.value = val
+    }
+  })
+  const currentPage = computed({
+    get: () => props.pageNum,
+    set: (val) => {
+      console.log(props.tableData,'tableData');
+
+      currentPage.value = val
+    }
+  })
+
 
   // 多选框
   const handleSelectionChange = (val: any) => {
@@ -42,11 +57,11 @@ export interface Props {
     emits('selectChange',val)
   }
   const currentChange = (val:number) => {
-    currentPage.value = val
+    // currentPage.value = val
     emits('pagination',{pageNum:val,pageSize:pageSize.value})
   }
   const sizeChange = (val:number) => {
-    pageSize.value = val
+    // pageSize.value = val
     emits('pagination',{pageSize:val,pageNum:currentPage.value})
   }
 
@@ -106,3 +121,4 @@ export interface Props {
   margin-top: 20px;
 }
 </style>
+@/components/types/my-table../types/my-table

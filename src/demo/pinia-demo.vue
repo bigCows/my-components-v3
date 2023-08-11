@@ -2,7 +2,6 @@
 import { useCounterStore } from '@/stores/counter';
 import { useUserStore } from '@/stores/user';
 
-
 const useCounter = useCounterStore()
 
 const useUser = useUserStore()
@@ -37,3 +36,4 @@ const reset = () => {
 <style scoped>
 
 </style>
+../types/test

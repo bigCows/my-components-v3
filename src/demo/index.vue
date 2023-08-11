@@ -7,10 +7,11 @@ import router from '@/router';
   <div class="my-container">
     <header class="my-header"></header>
     <main class="my-main">
-      <el-button type="success" @click="router.push('/single-message-demo')">singleMessageDemo</el-button>
-      <el-button type="success" @click="router.push('/pinia-demo')">piniademo</el-button>
-      <el-button type="success" @click="router.push('/components-namespaces-demo')">componentsNamespacesDemo</el-button>
-      <el-button type="success" @click="router.push('/diretive-demo')">directiveDemo</el-button>
+      <el-button type="success" @click="router.push('/single-message')">singleMessageDemo</el-button>
+      <el-button type="success" @click="router.push('/pinia')">piniademo</el-button>
+      <el-button type="success" @click="router.push('/components-namespaces')">componentsNamespacesDemo</el-button>
+      <el-button type="success" @click="router.push('/diretive')">directiveDemo</el-button>
+      <el-button type="success" @click="router.push('/my-table')">myTableDemo</el-button>
 
       <RouterView />
     </main>

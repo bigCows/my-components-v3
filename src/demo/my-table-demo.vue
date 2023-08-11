@@ -3,62 +3,52 @@
     id:number,
     name:string,
     description:string,
-    ifUse:string
+    is_use:string
   }
   const isShow = reactive({sortShow: true,selectionShow: true,detailShow: true})
   const currentPage = ref(1)
   const limit = ref(2)
   const tableHeader = ref([
-        {
-          label: '编号',
-          key: 'id',
-          width:'70px'
-      
-        },
-        {
-          label: '姓名',
-          key: 'name',
-          width:'150px',
-          slotName:'bbb'
-      
-        },
-        {
-          label: '权限描述',
-          key: 'description',
-          slotName:'aaa'
-          
-        },
+        { label: '编号', key: 'id', width:'70px' },
+        { label: '姓名', key: 'name', width:'150px', slotName:'slotName' },
+        { label: '性别', key: 'sex', width:'150px', slotName: 'slotSex' },
+        { label: '权限描述', key: 'description', slotName:'slotDes' },
   ])
   const tableData = ref([
         {
           "id":221,
           "name": "西药开立权限",
+          "sex": "1",
           "description": "医生对西药处方权限",
-          "ifUse":"0",
+          "is_use":"0",
         },
         {
           "id":222,
           "name": "草药开立权限",
+          "sex": "0",
           "description": "医生对草药处方权限",
-          "ifUse":"0",
+          "is_use":"0",
         },
         {
           "id":223,
           "name": "成药开立权限",
+          "sex": "1",
           "description": "医生对成药处方权限",
-          "ifUse":"0"
+          "is_use":"0"
         }, 
         {
           "id":224,
           "name": "麻醉开立权限",
+          "sex": "0",
           "description": "医生对麻醉处方权限",
-          "ifUse":"0"
+          "is_use":"0"
         },
         {
           "id":225,
           "name": "精一开立权限",
+          "sex": "1",
           "description": "医生对精一处方权限",
-          "ifUse":"0"
+          "is_use":"0"
         }
   ])
   const selectChange = (val: tableDataType) => {
@@ -100,9 +90,11 @@
       >
       <!-- 自定义插槽列 -->
       <template #columnSlot="{scope}">
-      {{scope.row[scope.column.property]}}
+        <span v-if="!(scope.column.property === 'sex')">
+          {{scope.row[scope.column.property]}}
+        </span>
         <el-switch
-          v-model="scope.row.ifUse"
+          v-model="scope.row.is_use"
           v-if="scope.column.property === 'description'"
           :active-color="'#61afef'"
           :inactive-color="'#ccc'"
@@ -110,9 +102,10 @@
           >
         </el-switch>
 
-        <el-button v-if="scope.column.property === 'name'">name列插槽</el-button>
-      
-  
+        <span v-if="scope.column.property === 'sex'">
+          {{ scope.row[scope.column.property] === '1' ? '男' : '女'  }}
+        </span>
+
       </template>
 
       <!-- 操作列：详情、删除等功能 -->
