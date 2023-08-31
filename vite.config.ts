@@ -33,6 +33,11 @@ export default defineConfig({
     }
   },
   build:{
-    
+    terserOptions:{
+      compress:{
+        // 生产环境移除console
+        drop_console:true
+      }
+    }
   }
 })
