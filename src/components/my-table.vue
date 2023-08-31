@@ -27,7 +27,7 @@ import type {isShowType} from '../types/my-table.d'
   })
   console.log(props,'props');
 
-  const emits = defineEmits(['selectChange','pagination'])
+  const emits = defineEmits(['selectChange','paginationFn'])
 
   // const pageSize = ref(props.limit)
   // const currentPage = ref(props.pageNum) 
@@ -58,11 +58,11 @@ import type {isShowType} from '../types/my-table.d'
   }
   const currentChange = (val:number) => {
     // currentPage.value = val
-    emits('pagination',{pageNum:val,pageSize:pageSize.value})
+    emits('paginationFn',{pageNum:val,pageSize:pageSize.value})
   }
   const sizeChange = (val:number) => {
     // pageSize.value = val
-    emits('pagination',{pageSize:val,pageNum:currentPage.value})
+    emits('paginationFn',{pageSize:val,pageNum:currentPage.value})
   }
 
 </script>
@@ -99,7 +99,12 @@ import type {isShowType} from '../types/my-table.d'
 
         </template>
       </el-table-column>
+
+      <template #empty>
+        <el-empty description="暂无数据" />
+      </template>
     </el-table>
+
     <div class="pagination">
       <el-pagination
         :current-page="currentPage"

@@ -6,7 +6,8 @@
     "dev": "vite",
     "preview": "vite preview",
     "build": "vite build",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
+    "test": "rm -rf dist && echo 'del success' "
   },
   "dependencies": {
     "@types/lodash": "^4.14.195",
