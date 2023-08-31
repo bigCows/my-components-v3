@@ -36,7 +36,7 @@ const showEllipsis = computed(() => {
       <el-button type="success" @click="router.push('/my-table')">myTableDemo</el-button>
 
       <div class="my-log">
-        <img src="src/assets/logo-vue.svg" alt="">
+        <img src="../assets/logo-vue.svg" alt="">
       </div>
 
       <div v-for="(value,key) in obj">
