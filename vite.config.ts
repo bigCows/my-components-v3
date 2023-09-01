@@ -6,6 +6,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend' // 在script标签中使用name
+import {visualizer } from 'rollup-plugin-visualizer' // 依赖分析
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -26,6 +27,7 @@ export default defineConfig({
         resolvers: [ElementPlusResolver()] 
       }
     ),
+    visualizer({open:true})
   ],
   resolve: {
     alias: {
@@ -36,8 +38,18 @@ export default defineConfig({
     minify: 'terser',
     terserOptions:{
       compress:{
+        drop_console: true,
+        drop_debugger: true,
+      }
+    },
+    rollupOptions:{
+      output:{
         // 生产环境移除console
-        drop_console:true
+        inlineDynamicImports:true,
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+
       }
     }
   }
