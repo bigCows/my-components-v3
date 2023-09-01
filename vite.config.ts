@@ -34,14 +34,11 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  esbuild: {
+    drop:['console','debugger'],
+    sourcemap: true,
+  },
   build:{
-    minify: 'terser',
-    terserOptions:{
-      compress:{
-        drop_console: true,
-        drop_debugger: true,
-      }
-    },
     rollupOptions:{
       output:{
         // 生产环境移除console
