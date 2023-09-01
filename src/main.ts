@@ -19,10 +19,6 @@ const app = createApp(App)
 
 app.directive('height', {
  mounted(el, binding, vnode, preVnode) {
-//  console.log(binding, 'binding');
-//  console.log(vnode, 'vnode');
-//  console.log(preVnode, 'preVnode');
- 
 //  el.style.height = binding.value + 'px'
 //  el.innerText = binding.value + 'px' 
  el.innerText = binding.value ? binding.value.split('').reverse().join('') : '';
