@@ -1,3 +1,51 @@
+<template>
+  <div class="layout-container">
+    <h1>my-table</h1>
+    <div class="lc-table">
+      <my-table 
+        :tableData="tableData" 
+        :tableHeader="tableHeader"    
+        :isShow="isShow"
+        :pageNum="currentPage"
+        :limit="limit"
+        :pageSizes="[1,2,3,4]"
+        :dataTotal="total"
+        @selectChange="selectChange"
+        @paginationFn="getListFn"
+      >
+      <!-- 自定义插槽列 -->
+      <template #columnSlot="{scope}">
+        <el-switch
+          v-model="scope.row.is_use"
+          v-if="scope.column.property === 'description'"
+          :active-color="'#61afef'"
+          :inactive-color="'#ccc'"
+          @change="changeStatus(scope.row)"
+          >
+        </el-switch>
+        <span class="column-text" v-if="!(scope.column.property === 'sex')">
+          {{scope.row[scope.column.property]}}
+        </span>
+        
+
+        <span v-if="scope.column.property === 'sex'">
+          {{ scope.row[scope.column.property] === '1' ? '男' : '女'  }}
+        </span>
+
+      </template>
+
+      <!-- 操作列：详情、删除等功能 -->
+      <template #operation="{scope}">
+          <el-link class="opreate" :underline="false"  type="primary" @click="detailRow(scope.row)">详情</el-link>
+          <el-link class="opreate" :underline="false" type="danger" @click="delRow(scope.row)">删除</el-link>
+      </template>
+
+      </my-table>
+    
+    </div>
+  </div>
+</template>
+
 <script setup lang='ts'>
 import commonApi from '@/service/api'
 import type { pagenationType, tableDataType } from '@/types/my-table.d'
@@ -93,53 +141,6 @@ const changeStatus =(rowInfo: tableDataType) => {
 
 </script>
 
-<template>
-  <div class="layout-container">
-    <h1>my-table</h1>
-    <div class="lc-table">
-      <my-table 
-        :tableData="tableData" 
-        :tableHeader="tableHeader"    
-        :isShow="isShow"
-        :pageNum="currentPage"
-        :limit="limit"
-        :pageSizes="[1,2,3,4]"
-        :dataTotal="total"
-        @selectChange="selectChange"
-        @paginationFn="getListFn"
-      >
-      <!-- 自定义插槽列 -->
-      <template #columnSlot="{scope}">
-        <el-switch
-          v-model="scope.row.is_use"
-          v-if="scope.column.property === 'description'"
-          :active-color="'#61afef'"
-          :inactive-color="'#ccc'"
-          @change="changeStatus(scope.row)"
-          >
-        </el-switch>
-        <span class="column-text" v-if="!(scope.column.property === 'sex')">
-          {{scope.row[scope.column.property]}}
-        </span>
-        
-
-        <span v-if="scope.column.property === 'sex'">
-          {{ scope.row[scope.column.property] === '1' ? '男' : '女'  }}
-        </span>
-
-      </template>
-
-      <!-- 操作列：详情、删除等功能 -->
-      <template #operation="{scope}">
-          <el-link class="opreate" :underline="false"  type="primary" @click="detailRow(scope.row)">详情</el-link>
-          <el-link class="opreate" :underline="false" type="danger" @click="delRow(scope.row)">删除</el-link>
-      </template>
-
-      </my-table>
-    
-    </div>
-  </div>
-</template>
 
 <style scoped>
 

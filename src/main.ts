@@ -13,28 +13,13 @@ import 'normalize.css/normalize.css'
 
 import { singleMessage } from '@/components/single-message'
 import resetStore from '@/stores/reset-stroe'
+import directives from '@/directive/index'
 
 
 const app = createApp(App)
 
-app.directive('height', {
- mounted(el, binding, vnode, preVnode) {
-//  el.style.height = binding.value + 'px'
-//  el.innerText = binding.value + 'px' 
- el.innerText = binding.value ? binding.value.split('').reverse().join('') : '';
-}  
-})
-app.directive('myText', {
- mounted(el, binding, vnode, preVnode) {
- console.log(binding, 'binding');
-//  console.log(vnode, 'vnode');
-//  console.log(preVnode, 'preVnode');
- 
-//  el.style.height = binding.value + 'px'
-//  el.innerText = binding.value + 'px' 
- el.innerText = binding.value ? binding.value.name.split('').reverse().join('') : '无法识别';
-    }  
-})
+// 注册全局指令
+app.use(directives)
 
 // 单例模式消息提示
 app.config.globalProperties.singleMessage = singleMessage

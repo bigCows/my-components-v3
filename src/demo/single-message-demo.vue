@@ -6,7 +6,6 @@
 
 <script setup lang='ts'>
 
-
 const { appContext } = getCurrentInstance()! 
 const { singleMessage } = appContext.config.globalProperties
 
@@ -17,6 +16,7 @@ const obj1 = {
 
 const obj2 = ref({...obj1})
 obj2.value.name = 'ls'
+
 
 const warnFn = () => {
   singleMessage({

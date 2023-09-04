@@ -1,17 +1,3 @@
-<script setup lang='ts'>
-import { useCounterStore } from '@/stores/counter';
-import { useUserStore } from '@/stores/user';
-
-const useCounter = useCounterStore()
-
-const useUser = useUserStore()
-
-const reset = () => {
-  useUser.$reset()
-  useCounter.$reset()
-}
-
-</script>
 
 <template>
   <div>
@@ -32,6 +18,21 @@ const reset = () => {
  
   </div>
 </template>
+
+<script setup lang='ts'>
+import { useCounterStore } from '@/stores/counter';
+import { useUserStore } from '@/stores/user';
+
+const useCounter = useCounterStore()
+
+const useUser = useUserStore()
+
+const reset = () => {
+  useUser.$reset()
+  useCounter.$reset()
+}
+
+</script>
 
 <style scoped>
 

@@ -1,3 +1,13 @@
+
+<template>
+  <div>
+    <input type="text" v-focus="'120'" />
+    <p v-height="'100'"></p>
+    <p v-myText:bar.stop="obj">p标签</p>
+ 
+  </div>
+</template>
+
 <script setup lang='ts'>
 
 const obj = ref({
@@ -7,8 +17,10 @@ const obj = ref({
 
 // 自定义指令
 const vFocus = {
-  mounted(el: HTMLElement) {
-    // console.log(el,'el');
+  mounted(el: HTMLElement, binding: any) {
+    console.log(el,'el');
+    console.log(binding,'binding');
+    
     el.focus()
     el.classList.add('my-height')
     el.style.color = 'red'
@@ -19,15 +31,6 @@ const vFocus = {
 }
 
 </script>
-
-<template>
-  <div>
-    <input type="text" v-focus />
-    <p v-height="'123'"></p>
-    <p v-myText:bar.stop="obj">p标签</p>
- 
-  </div>
-</template>
 
 <style scoped>
 .my-height {

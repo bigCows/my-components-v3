@@ -79,12 +79,12 @@ import type {isShowType} from '../types/my-table.d'
     @selection-change="handleSelectionChange"
     >
 
-      <el-table-column type="selection" v-if="isShow.selectionShow" />  
+      <el-table-column type="selection" v-if="isShow.selectionShow" align="center" />  
 
-      <el-table-column type="index" v-if="isShow.sortShow" label="序号" width="70"/>
+      <el-table-column type="index" v-if="isShow.sortShow" label="序号" width="70" align="center"/>
       
       <template v-for="item in tableHeader" :key="item.key">
-        <el-table-column  :label="item.label" :prop="item.key" :show-overflow-tooltip="true" :width="item.width" >
+        <el-table-column  :label="item.label" :prop="item.key" align="center" :show-overflow-tooltip="true" :width="item.width" >
           <template #default="scope" v-if="item.slotName">
              <!-- 自定义插槽列 -->
              <slot name="columnSlot" :scope="scope"></slot>
@@ -93,7 +93,7 @@ import type {isShowType} from '../types/my-table.d'
       </template>
 
 
-      <el-table-column label="操作" v-if="isShow.detailShow">
+      <el-table-column label="操作" v-if="isShow.detailShow" align="center" fixed="right">
         <template #default="scope">
           <slot name="operation" :scope="scope"></slot>
 

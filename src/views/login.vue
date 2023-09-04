@@ -1,3 +1,9 @@
+<template>
+  <div>
+    <el-button type="primary" @click="login()">登录</el-button>
+  </div>
+</template>
+
 <script setup lang='ts'>
 import { useUserStore } from '@/stores/user';
   const router = useRouter()
@@ -7,12 +13,6 @@ import { useUserStore } from '@/stores/user';
     router.push('/')
   }
 </script>
-
-<template>
-  <div>
-    <el-button type="primary" @click="login()">登录</el-button>
-  </div>
-</template>
 
 <style scoped>
 
