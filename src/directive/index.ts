@@ -1,11 +1,12 @@
 import type {App, Directive} from 'vue'
 import myText from "./modules/text";
 import height from "./modules/height";
-
+import auth from './modules/auth';
 
 const directiveList: {[key:string] : Directive} = {
     myText,
-    height
+    height,
+    auth
 }
 
 const directives = {

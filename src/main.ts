@@ -17,7 +17,6 @@ import directives from '@/directive/index'
 
 
 const app = createApp(App)
-
 // 注册全局指令
 app.use(directives)
 
