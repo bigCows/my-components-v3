@@ -7,7 +7,6 @@
 <script setup lang='ts' name="twoComponent">
 </script>
 
-
 <style scoped>
 
 </style>

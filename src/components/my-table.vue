@@ -13,57 +13,51 @@ import type {isShowType} from '../types/my-table.d'
   dataTotal: number
   }
 
+const props  = withDefaults(defineProps<Props>(), {
+  tableData: () => [],
+  tableHeader: () => [],
+  isShow:() => ({sortShow: false,selectionShow: false,detailShow: false}),
+  limit: 2,
+  pageNum: 1,
+  pagination: "total, sizes, prev, pager, next, jumper",
+  pageSizes: () => [1,5,10,20,50],
+  dataTotal: 0,  
+})
+console.log(props,'props');
 
-  const props  = withDefaults(defineProps<Props>(), {
-    tableData: () => [],
-    tableHeader: () => [],
-    isShow:() => ({sortShow: false,selectionShow: false,detailShow: false}),
-    limit: 2,
-    pageNum: 1,
-    pagination: "total, sizes, prev, pager, next, jumper",
-    pageSizes: () => [1,5,10,20,50],
-    dataTotal: 0,
+const emits = defineEmits(['selectChange','paginationFn'])
+// const pageSize = ref(props.limit)
+// const currentPage = ref(props.pageNum) 
+const pageSize = computed({
+  get: () => props.limit,
+  set: val => {
+    console.log(props.tableData,'tableData');
     
-  })
-  console.log(props,'props');
+    pageSize.value = val
+  }
+})
+const currentPage = computed({
+  get: () => props.pageNum,
+  set: val => {
+    console.log(props.tableData,'tableData');
+    currentPage.value = val
+  }
+})
 
-  const emits = defineEmits(['selectChange','paginationFn'])
-
-  // const pageSize = ref(props.limit)
-  // const currentPage = ref(props.pageNum) 
-
-  const pageSize = computed({
-    get: () => props.limit,
-    set: (val) => {
-      console.log(props.tableData,'tableData');
-      
-      pageSize.value = val
-    }
-  })
-  const currentPage = computed({
-    get: () => props.pageNum,
-    set: (val) => {
-      console.log(props.tableData,'tableData');
-
-      currentPage.value = val
-    }
-  })
-
-
-  // 多选框
-  const handleSelectionChange = (val: any) => {
-    console.log(val,'handleselectionchange');
+// 多选框
+const handleSelectionChange = (val: any) => {
+  console.log(val,'handleselectionchange');
     
-    emits('selectChange',val)
-  }
-  const currentChange = (val:number) => {
-    // currentPage.value = val
-    emits('paginationFn',{pageNum:val,pageSize:pageSize.value})
-  }
-  const sizeChange = (val:number) => {
-    // pageSize.value = val
-    emits('paginationFn',{pageSize:val,pageNum:currentPage.value})
-  }
+  emits('selectChange',val)
+}
+const currentChange = (val:number) => {
+  // currentPage.value = val
+  emits('paginationFn',{pageNum:val,pageSize:pageSize.value})
+}
+const sizeChange = (val:number) => {
+  // pageSize.value = val
+  emits('paginationFn',{pageSize:val,pageNum:currentPage.value})
+}
 
 </script>
 
@@ -91,7 +85,6 @@ import type {isShowType} from '../types/my-table.d'
           </template>
         </el-table-column>
       </template>
-
 
       <el-table-column label="操作" v-if="isShow.detailShow" align="center" fixed="right">
         <template #default="scope">

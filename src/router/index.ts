@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 
-
 export const routes = [
   {
     path: '/',
@@ -58,7 +57,6 @@ export const router = createRouter({
   routes
 })
 
-
 export const asyncRoutes = [
   {
     path: '/a',
@@ -72,8 +70,7 @@ export const asyncRoutes = [
   }
 ]
 
-const whiteList = ['/login']
-
+// const whiteList = ['/login']
 
 // router.addRoute({
 //   path: '/b', 
@@ -127,7 +124,7 @@ router.beforeEach((to, from, next) => {
     //   name: 'a',
     //   component: () => import('@/views/a.vue')
     // })
-    console.log(router, 'router');
+    console.log(router, 'router')
   }
   next()
 })

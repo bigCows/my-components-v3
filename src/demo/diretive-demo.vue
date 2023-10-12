@@ -19,7 +19,7 @@ const obj = ref({
 
 // 自定义指令
 const vFocus = {
-  mounted(el: HTMLElement, binding: any) {
+  mounted(el: HTMLElement) {
     
     el.focus()
     el.classList.add('my-height')

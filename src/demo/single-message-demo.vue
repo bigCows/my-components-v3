@@ -17,14 +17,12 @@ const obj1 = {
 const obj2 = ref({...obj1})
 obj2.value.name = 'ls'
 
-
 const warnFn = () => {
   singleMessage({
-  message: 'This is a single message',
-  type: 'warning'
-}) 
+    message: 'This is a single message',
+    type: 'warning'
+  }) 
 }
-
 
 </script>
 

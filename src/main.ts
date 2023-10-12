@@ -15,7 +15,6 @@ import { singleMessage } from '@/components/single-message'
 import resetStore from '@/stores/reset-stroe'
 import directives from '@/directive/index'
 
-
 const app = createApp(App)
 // 注册全局指令
 app.use(directives)
@@ -31,5 +30,3 @@ app.use(pinia)
 app.use(router)
 
 app.mount('#app')
-
-

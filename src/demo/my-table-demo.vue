@@ -26,7 +26,6 @@
         <span class="column-text" v-if="!(scope.column.property === 'sex')">
           {{scope.row[scope.column.property]}}
         </span>
-        
 
         <span v-if="scope.column.property === 'sex'">
           {{ scope.row[scope.column.property] === '1' ? '男' : '女'  }}
@@ -48,16 +47,16 @@
 
 <script setup lang='ts'>
 import commonApi from '@/service/api'
-import type { pagenationType, tableDataType } from '@/types/my-table.d'
+import type { pagenationType, tableDataType } from '@/types/my-table'
 
 const isShow = reactive({sortShow: true,selectionShow: true,detailShow: true})
 const currentPage = ref(1)
 const limit = ref(2)
 const tableHeader = ref([
-      { label: '编号', key: 'id', width:'70px' },
-      { label: '姓名', key: 'name', width:'150px', slotName:'slotName' },
-      { label: '性别', key: 'sex', width:'150px', slotName: 'slotSex' },
-      { label: '权限描述', key: 'description', slotName:'slotDes' },
+  { label: '编号', key: 'id', width:'70px' },
+  { label: '姓名', key: 'name', width:'150px', slotName:'slotName' },
+  { label: '性别', key: 'sex', width:'150px', slotName: 'slotSex' },
+  { label: '权限描述', key: 'description', slotName:'slotDes' },
 ])
 // const tableData = ref([
 //       {
@@ -127,7 +126,6 @@ const getListFn = async (val:pagenationType) => {
   //     "total": "150"
   // }
 
-
   tableData.value = res.list
   total.value = Number(res.total)
 }
@@ -138,9 +136,7 @@ const changeStatus =(rowInfo: tableDataType) => {
   console.log(rowInfo,'changeStatus');
 }
 
-
 </script>
-
 
 <style scoped>
 

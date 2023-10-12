@@ -11,7 +11,6 @@ const num = ref(0)
 num.value = Math.random()
 </script>
 
-
 <style scoped>
 
 </style>

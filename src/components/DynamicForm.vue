@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button type="primary"> b页面</el-button>
+    
   </div>
 </template>
 
