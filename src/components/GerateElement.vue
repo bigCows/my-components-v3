@@ -4,9 +4,27 @@
       <el-row :gutter="20">
         <!-- 此处直接循环列，宽度不够会自动换行展示 -->
         <el-col v-for="element in elements" :key="element.id" :span="element.columnSpan">
-          <el-form-item :label="element.label" :prop="element.props">
-            <component :is="element.component" v-bind="element.props" v-model="element.vModel">
-              <slot v-if="element.slotName" name="content">{{ element.slotContent }}</slot>
+          <el-form-item :label="element.label" :prop="element.prop">
+            <component 
+              :is="element.component"
+              v-bind="element.formItem" 
+              v-model="dynamicForm[element.prop]" 
+              v-on="element.formItem.events"
+              >
+              <component 
+                :is="'el-option'"
+                v-for="item in element.options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+              <component 
+                :is="'el-radio'"
+                v-for="item in element.radioValue"
+                :key="item"
+                :label="item"
+              />
+                <slot v-if="element.slotName" >{{ element.slotContent }}</slot>
             <!-- 递归子元素 -->
                 <template v-for="child in element.children" :key="child.id">
                   <GerateElement :element="child" />
@@ -27,14 +45,32 @@ export default {
 </script>
 
 <script setup lang='ts'>
+
 interface elementsType {
-  elements: Array<any>
+  elements: Array<any>,
+  detailVal?: Array<any>
 }
-withDefaults(defineProps<elementsType>(),{
-  elements: () => []
+const props = withDefaults(defineProps<elementsType>(),{
+  elements: () => [],
+  detailVal: () => []
 })
 
-const dynamicForm = {}
+const dynamicForm = reactive<any>({})
+
+const handleVmodel = () => {
+  props.elements.forEach((element: any) => {
+    if (element.prop) {
+      props.detailVal!.forEach((detail: any) => {
+        if(detail[element.prop]) dynamicForm[element.prop] = detail[element.prop]
+      })
+    }
+  })
+  console.log(dynamicForm,'handleVmodel');
+}
+
+onMounted(() => {
+  handleVmodel()
+})
 
 </script>
 
