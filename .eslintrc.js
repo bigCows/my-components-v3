@@ -45,7 +45,7 @@ module.exports = {
        "arrow-parens": ["error", "as-needed"], // 箭头函数的参数可以不使用圆括号
        "indent": ["error", 2], //缩进风格(强制使用一致的缩进)
        "semi": "off", //可以使用分号
-       "no-unused-vars": "error", //禁止出现未使用过的变量
+       "@typescript-eslint/no-unused-vars": "error", //不能有声明后未被使用的变量或参数
        "no-multiple-empty-lines": ["error", { "max": 1 }], //空行最多不能超过1行
        "no-debugger": process.env.NODE_ENV === 'production' ? 'error' : 'off', //线上禁止使用debugger
     },

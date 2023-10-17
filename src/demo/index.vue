@@ -10,6 +10,12 @@
 
       <GerateElement :elements="elementJson"></GerateElement>
 
+      <el-input v-model="data" placeholder="请输入内容" style="width: 500px">
+        <template #append>
+          <el-button v-copy="data"> 复制 </el-button>
+        </template>
+      </el-input>
+
       <RouterView />
     </main>
   </div>
@@ -18,6 +24,8 @@
 <script setup lang='ts'>
 import GerateElement from '@/components/GerateElement.vue';
 import router from '@/router';
+
+const data = ref('我是复制的内容')
 
 const elementJson = [
   {
@@ -53,7 +61,6 @@ const elementJson = [
           console.log(val);
         }
       }
-      
     },
     options: [
       {label: '选项1', value: '1'},
@@ -129,19 +136,17 @@ const elementJson = [
  
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .my-container {
   height: 100vh;
   .my-header{
     width: 100vw;
     height: 50px;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid #cccccc;
   }
-  
   .my-main {
     width: 100vw;
     padding-top: 20px;
-
     .my-log {
       width: 200px;
       height: 200px;
