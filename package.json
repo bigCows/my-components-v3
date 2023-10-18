@@ -14,7 +14,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo 'husky start working...' pnpm run lint && pnpm run style"
+      "pre-commit": "echo 'husky start working...' && pnpm run lint && pnpm run style"
     }
   },
   "lint-staged": {
