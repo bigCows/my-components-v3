@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="greateElemnt">
     <el-form :model="dynamicForm">
       <el-row :gutter="20">
         <!-- 此处直接循环列，宽度不够会自动换行展示 -->
@@ -73,7 +73,10 @@ onMounted(() => {
 })
 
 </script>
-
-<style scoped>
-
+<style scoped lang="scss">
+.greateElemnt {
+  :deep(.el-form-item__label){
+    width: 100px;
+  }
+}
 </style>

@@ -10,11 +10,13 @@
 
       <GerateElement :elements="elementJson"></GerateElement>
 
-      <el-input v-model="data" placeholder="请输入内容" style="width: 500px">
-        <template #append>
-          <el-button v-copy="data"> 复制 </el-button>
-        </template>
-      </el-input>
+       <!--截图组件-->
+      <screen-short v-if="screenshotStatus"
+      @destroy-component="destroyComponent"
+      @get-image-data="getImg"
+      @webrtc-error="webrtcError"
+      ></screen-short>
+      <el-button @click="v3ScreenShot">截图</el-button>
 
       <RouterView />
     </main>
@@ -23,9 +25,33 @@
 
 <script setup lang='ts'>
 import GerateElement from '@/components/GerateElement.vue';
+import {ElMessage} from 'element-plus';
 import router from '@/router';
 
-const data = ref('我是复制的内容')
+const screenshotStatus = ref<boolean>(false);
+// 销毁组件函数
+const destroyComponent = function(status: boolean) {
+  screenshotStatus.value = status;
+}
+
+const v3ScreenShot = () => {
+  screenshotStatus.value = true;
+}
+
+// 获取裁剪区域图片信息
+const getImg = function(base64: string) {
+  console.log("截图组件传递的图片信息", base64);
+}
+
+const webrtcError = () => {
+  ElMessage.error('截图组件初始化失败');
+}
+
+// const timer: NodeJS.Timer = setTimeout(() => {
+//   clearTimeout(timer);
+//   console.log('定时器');
+// }, 1000);
+// console.log(import.meta.url,'import.meta.url');
 
 const elementJson = [
   {
@@ -55,11 +81,9 @@ const elementJson = [
       plachoder: '请选择',
       events: {
         change: (val: any) => {
-          console.log(val);
+          console.log(val,'下拉框');
+
         },
-        visibleChange: (val: any) => {
-          console.log(val);
-        }
       }
     },
     options: [
@@ -125,6 +149,8 @@ const elementJson = [
     formItem: {
       type: 'date',
       placeholder: '请选择时间',
+      format: "YYYY/MM/DD",
+      valueFormat: "YYYY-MM-DD",
       events:{
         change: (val: any) => {
           console.log(val,'change');
@@ -133,10 +159,10 @@ const elementJson = [
     }
   }
 ]
- 
+
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="scss"> 
 .my-container {
   height: 100vh;
   .my-header{

@@ -144,17 +144,16 @@ const changeStatus =(rowInfo: tableDataType) => {
     width: 100%;
     height: 100%;
   }
-
   .lc-table {
     width: 1000px;
-    border: 1px solid red;
     padding-bottom: 50px;
+    border: 1px solid red;
     .column-text {
       margin-left: 20px;
     }
     .opreate {
-      font-size: 12px;
       padding-right: 20px;
+      font-size: 12px;
     }
   }
 

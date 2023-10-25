@@ -14,11 +14,12 @@ import 'normalize.css/normalize.css'
 import { singleMessage } from '@/components/single-message'
 import resetStore from '@/stores/reset-stroe'
 import directives from '@/directive/index'
+import screenShort from "vue-web-screen-shot";
 
 const app = createApp(App)
 // 注册全局指令
 app.use(directives)
-
+app.use(screenShort,{enableWebRtc: true})
 // 单例模式消息提示
 app.config.globalProperties.singleMessage = singleMessage
 
